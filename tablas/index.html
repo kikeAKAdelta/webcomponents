@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tablas dinamicas</title>
+</head>
+<body>
+	<script src="./Tablawc.js"></script>
+	<tabla-wc></tabla-wc>
+
+	<script>
+		
+		// let tablita=document.querySelector('tabla-wc');
+		// let valorTabla=tablita.shadowRoot.querySelector('input');
+		// alert(valorTabla.value);
+		// valorTabla.value="salu";
+		// alert(valorTabla.value);
+		let tabla=document.querySelector('tabla-wc');
+		let celda=tabla.shadowRoot.querySelector('table>#myf>#men');
+		// alert(celda.rows[0].cells.length);
+		alert(celda.innerText);
+	</script>
+</body>
+</html>

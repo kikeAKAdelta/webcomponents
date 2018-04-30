@@ -1,0 +1,56 @@
+
+ <table id="producttable">
+  <thead>
+    <tr>
+      <td>UPC_Code</td>
+      <td>Product_Name</td>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- existing data could optionally be included here -->
+  </tbody>
+</table>
+<template id="productrow">
+  <tr>
+    <td class="record"></td>
+    <td></td>
+  </tr>
+</template>
+
+<script>
+	if ('content' in document.createElement('template')) {
+
+  // Instantiate the table with the existing HTML tbody
+  // and the row with the template
+  var t = document.querySelector('#productrow');  //Obtenemos el template
+  let td = t.content.querySelectorAll("td");  //Accedemos al contenido del template
+  td[0].textContent = "1235646565";  //Establecemos texto
+  td[1].textContent = "Stuff";
+
+  // Clone the new row and insert it into the table
+  var tb = document.querySelector("tbody");  //tbody parte del cuerpo
+  var clone = document.importNode(t.content, true);  //Clonamos el template
+  tb.appendChild(clone);
+  
+  // Create a new row
+  td[0].textContent = "0384928528";
+  td[1].textContent = "Acme Kidney Beans";
+
+  // Clone the new row and insert it into the table
+  var clone2 = document.importNode(t.content, true);
+  tb.appendChild(clone2);
+
+} else {
+  // Find another way to add the rows to the table because 
+  // the HTML template element is not supported.
+}
+</script>
+
+<style>
+	table {
+  background: #000;
+}
+table td {
+  background: #fff;
+}
+</style>

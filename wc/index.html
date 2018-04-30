@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Mostrando autocomplete</title>
+	
+</head>
+<body>
+
+</script>
+
+	<script src='ListComplete.js'></script>
+	<script src='DetallesMarca.js'></script>
+	<h1>Mostrando elementos de marca resource</h1>
+	<p id="h" >Hola</p>
+
+	<lista-comp id="miopcion">
+		
+	</lista-comp>
+
+	<!-- <detalles-marca></detalles-marca> -->
+
+	<script  type='module' >
+		import MarcaResourceClient from './MarcaResourceClient.js';
+		
+		var mrc=new MarcaResourceClient();
+		var mijson=new Array();
+		var complete=document.querySelector('lista-comp');
+		// var detalles=document.querySelector('detalles-marca');
+		
+		var jsonObjects='';
+
+		var x=mrc.findByName()
+		.then(function (res){
+            return res.json();
+        })
+        .then(function (data){
+        	jsonObjects=data;
+	        console.log(jsonObjects);
+	        console.log(jsonObjects[0].marca);
+	        complete.setJsonObjects(data);
+	        let i=0;
+	        data.forEach( function(marca) {
+	        	mijson[i]=marca.marca;
+	        	i++;
+	        });
+	        console.log(mijson);
+	        
+	        complete.setOpciones(mijson);
+	        
+        })        
+
+        let cont=0;
+        
+
+		complete.addEventListener('click', e=>{
+			
+			let concedido=complete.getClickInterno();
+			console.log(concedido);
+			if (concedido==true) {
+
+				let anterior=document.querySelector('detalles-marca');
+
+				if (anterior != null) {
+					let padre=anterior.parentNode;
+					padre.removeChild(anterior);
+				}
+
+				let detalles=document.createElement('detalles-marca');
+				
+				detalles.setJsonArea(complete.getDetallesMarca());
+				let deta=detalles.getJsonArea();
+				// detalles.innerHTML=deta;
+				
+				
+				document.body.appendChild(detalles);
+				
+								
+			}
+		});
+		
+				
+	</script>
+		
+</body>
+</html>

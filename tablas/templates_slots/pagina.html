@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Trbajando con plantillas y slots</title>
+	<!-- <link rel="import" href="plantillas.html"> -->
+</head>
+<body>
+
+	<template id="my-paragraph">
+	
+	<p><slot name='mitexto'>Mi texto por defecto por si algo va mal</slot></p>
+
+	</template>
+
+	<script src='./Componente.js'></script>
+	<my-paragraph>
+		<span slot='mitexto'>este es un texto diferente</span>
+		<ul slot='mitexto'>
+			<li>este es otro texto diferente</li>
+			<li>Liandola</li>
+		</ul>
+	</my-paragraph>
+</body>
+</html>

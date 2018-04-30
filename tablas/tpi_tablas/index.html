@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Mostrando datos</title>
+</head>
+<body>
+
+<template id="tablas">
+	<div id="tabla">
+		
+		<slot name='dato'>
+			<slot name='datoss'>texto defecto</slot>
+		</slot>
+			
+	</div>
+</template>
+
+<script src="./Tablawc.js"></script>
+
+<tabla-wc>
+	<ul slot='dato'>
+		<li slot='datoss'>oralee</li>
+	</ul>
+</tabla-wc>
+	
+</body>
+</html>
